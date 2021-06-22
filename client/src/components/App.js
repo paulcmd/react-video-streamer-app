@@ -1,13 +1,17 @@
 import React from "react";
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 const pageOne = () => {
-  return <div>pageOne</div>;
+  return <div>pageOne
+    <Link to="/2" >   Navigate to page 2</Link>
+  </div>;
 };
 
 const pageTwo = () => {
-  return <div>pageTwo</div>;
+  return <div >pageTwo
+    <Link to="/" >   Navigate to page 1</Link>
+  </div>;
 };
 
 const App = () => {
@@ -22,7 +26,6 @@ const App = () => {
     </div>
   );
 };
-//git working
 
 
 
