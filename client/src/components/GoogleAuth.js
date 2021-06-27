@@ -14,8 +14,15 @@ class GoogleAuth extends React.Component {
                 .then(() => {
                     this.auth = window.gapi.auth2.getAuthInstance()
                     this.setState({ isSignedIn: this.auth.isSignedIn.get() })
+                    this.auth.isSignedIn.listen(this.onAuthChange)
+
+                    console.log(this.auth.isSignedIn.get())
                 })
         })
+    }
+
+    onAuthChange = () => {
+        this.setState({ isSignedIn: this.auth.isSignedIn.get() })
     }
 
     renderAuthButton() {
@@ -54,4 +61,7 @@ export default GoogleAuth
 - scope...we only need to access the user's email
 - this.auth can be referenced from anywhere in the class to figure out if user is signed in or not
 - line 12...we are updating component level state with users sign in status. it changes when users signs in or off
+- you can manually call - gapi.auth2.getAuthInstance().signIn() to sign in to googleAuth
+- onAuthChange returns true or false to listen(), which then updates the state.
+- the listen() object is in the __proto__
 */
