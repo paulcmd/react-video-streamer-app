@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { signIn, signOut } from '../actions'
 
 class GoogleAuth extends React.Component {
     state = { isSignedIn: null }
@@ -21,6 +23,15 @@ class GoogleAuth extends React.Component {
         })
     }
 
+
+
+    onAuthChange = isSignedIn => {
+        if (isSignedIn) {
+            this.props.signIn()
+        } else {
+            this.props.signOut()
+        }
+    }
     //onButtonClick - sign out if signed in.
 
     onButtonClick = () => {
@@ -31,14 +42,10 @@ class GoogleAuth extends React.Component {
         }
     }
 
-    onAuthChange = () => {
-        this.setState({ isSignedIn: this.auth.isSignedIn.get() })
-    }
-
     renderAuthButton() {
         if (this.state.isSignedIn === null) {
             return null
-        } else if (this.state.isSignedIn) {
+        } else if (this.state.isSignedIn === true) {
             console.log('You are Signed In')
             return (
                 <button
@@ -68,7 +75,11 @@ class GoogleAuth extends React.Component {
     }
 }
 
-export default GoogleAuth
+const mapStateToProps = state => {
+    return { isSignedIn: state.auth.isSignedIn}
+}
+
+export default connect( mapStateToProps, { signIn, signOut })(GoogleAuth)
 
 /*
 - window.gapi - we have to indicate its for the window scope
