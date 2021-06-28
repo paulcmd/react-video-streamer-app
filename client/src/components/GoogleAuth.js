@@ -86,4 +86,8 @@ export default connect(mapStateToProps, { signIn, signOut })(GoogleAuth)
 - you can manually call - gapi.auth2.getAuthInstance().signIn() to sign in to googleAuth
 - onAuthChange returns true or false to listen(), which then updates the state.
 - the listen() object is in the __proto__
+- this.auth.isSignedIn.get() returns true or false to this.onAuthChange
+- listen receives true or false from this.props.signIn or this.props.signOut and updates the button on the page to 
+  reflect the current sign in state.
+- 24 - if(isSignIn) is true, then this.props.signIn() returns true as well (updates state to true)
 */
