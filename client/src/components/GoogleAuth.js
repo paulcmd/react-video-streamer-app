@@ -21,9 +21,9 @@ class GoogleAuth extends React.Component {
         })
     }
 
-    onAuthChange = isSignedIn => {
+    onAuthChange = (isSignedIn) => {
         if (isSignedIn) {
-            this.props.signIn()
+            this.props.signIn(this.auth.currentUser.get().getId())
         } else {
             this.props.signOut()
         }
@@ -90,4 +90,5 @@ export default connect(mapStateToProps, { signIn, signOut })(GoogleAuth)
 - listen receives true or false from this.props.signIn or this.props.signOut and updates the button on the page to 
   reflect the current sign in state.
 - 24 - if(isSignIn) is true, then this.props.signIn() returns true as well (updates state to true)
+- this.auth.currentUser.get().getId() has the user's id
 */
