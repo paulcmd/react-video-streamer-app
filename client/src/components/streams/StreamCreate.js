@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 
 class StreamCreate extends React.Component {
     renderInput({ input, label }) {
-        console.log(input)
+        console.log('input', input)
         return (
             <div className="field">
                 <label>{label}</label>
@@ -12,10 +12,17 @@ class StreamCreate extends React.Component {
         )
     }
 
+    onSubmit(formValues) {
+        console.log('formValues', formValues)
+    }
+
     render() {
-        console.log(this.props)
+        console.log('All props', this.props)
         return (
-            <form>
+            <form
+                className="ui form"
+                onSubmit={this.props.handleSubmit(this.onSubmit)}
+            >
                 <Field
                     name="title"
                     component={this.renderInput}
@@ -27,6 +34,8 @@ class StreamCreate extends React.Component {
                     component={this.renderInput}
                     label="Enter a description"
                 />
+
+                <button className="ui button primary">Submit</button>
             </form>
         )
     }
@@ -59,4 +68,6 @@ or destructure and have {...input}
 
 The Field element doesnt know what to do with the 'label' prop, so it will instead pass it into the 
 renderInput function. thats the reason we destructure label and pass it down.
+
+this.props.handleSubmit handles e.preventDefault. all it needs is the formValues from onSubmit
 */
