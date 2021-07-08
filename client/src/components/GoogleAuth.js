@@ -82,11 +82,11 @@ export default connect(mapStateToProps, { signIn, signOut })(GoogleAuth)
 - the callback function ie window.gapi.client... is called after this clients auth2 library is loaded into gapi
 - scope...we only need to access the user's email
 - this.auth can be referenced from anywhere in the class to figure out if user is signed in or not
-- line 12...we are updating component level state with users sign in status. it changes when users signs in or off
+- line 12...we are updating component level state with users sign in status. it changes when users signs in or out
 - you can manually call - gapi.auth2.getAuthInstance().signIn() to sign in to googleAuth
 - onAuthChange returns true or false to listen(), which then updates the state.
 - the listen() object is in the __proto__
-- this.auth.isSignedIn.get() returns true or false to this.onAuthChange
+- 16 - this.auth.isSignedIn.get() returns true or false to this.onAuthChange
 - listen receives true or false from this.props.signIn or this.props.signOut and updates the button on the page to 
   reflect the current sign in state.
 - 24 - if(isSignIn) is true, then this.props.signIn() returns true as well (updates state to true)
