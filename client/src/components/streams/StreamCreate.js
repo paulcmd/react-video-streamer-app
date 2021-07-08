@@ -5,7 +5,7 @@ class StreamCreate extends React.Component {
     renderInput({ input, label }) {
         console.log(input)
         return (
-            <div>
+            <div className="field">
                 <label>{label}</label>
                 <input {...input} />
             </div>
@@ -56,4 +56,7 @@ component={} can either be a react component or a function for Field to call
 
 we can instead do <input {...formProps.input} /> to access all properties of the input object
 or destructure and have {...input} 
+
+The Field element doesnt know what to do with the 'label' prop, so it will instead pass it into the 
+renderInput function. thats the reason we destructure label and pass it down.
 */
