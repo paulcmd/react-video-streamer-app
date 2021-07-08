@@ -2,8 +2,8 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 class StreamCreate extends React.Component {
-    renderInput({ input, label }) {
-        console.log('input', input)
+    renderInput({ input, label, meta }) {
+        console.log('meta', meta)
         return (
             <div className="field">
                 <label>{label}</label>
@@ -41,8 +41,19 @@ class StreamCreate extends React.Component {
     }
 }
 
+const validate = (formValues) => {
+    const error = {}
+    if (!formValues.title) {
+        error.title = 'You must enter a Title'
+    }
+    if (!formValues.description) {
+        error.description = 'You must enter a description'
+    }
+}
+
 export default reduxForm({
-    form: 'streamCreate'
+    form: 'streamCreate',
+    validate
 })(StreamCreate)
 
 /*
@@ -70,4 +81,6 @@ The Field element doesnt know what to do with the 'label' prop, so it will inste
 renderInput function. thats the reason we destructure label and pass it down.
 
 this.props.handleSubmit handles e.preventDefault. all it needs is the formValues from onSubmit
+
+validate: validate has been reduced to just validate
 */
