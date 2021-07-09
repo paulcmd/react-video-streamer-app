@@ -2,12 +2,25 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 class StreamCreate extends React.Component {
-    renderInput({ input, label, meta }) {
+    renderError({ error, touched }) {
+        if (touched && error) {
+            return (
+                <div className="ui error message">
+                    <div className="header">{error}</div>
+                </div>
+            )
+        }
+    }
+
+    renderInput = ({ input, label, meta }) => {
         console.log('meta', meta)
+        const className = `field ${ meta.error && meta.touched ? 'error' : ''}`
+        
         return (
-            <div className="field">
+            <div className={className}>
                 <label>{label}</label>
-                <input {...input} />
+                <input {...input} autoComplete="off" />
+                {this.renderError(meta)}
             </div>
         )
     }
@@ -17,10 +30,9 @@ class StreamCreate extends React.Component {
     }
 
     render() {
-        console.log('All props', this.props)
         return (
             <form
-                className="ui form"
+                className="ui form error"
                 onSubmit={this.props.handleSubmit(this.onSubmit)}
             >
                 <Field
@@ -49,6 +61,8 @@ const validate = (formValues) => {
     if (!formValues.description) {
         error.description = 'You must enter a description'
     }
+
+    return error
 }
 
 export default reduxForm({
@@ -83,4 +97,9 @@ renderInput function. thats the reason we destructure label and pass it down.
 this.props.handleSubmit handles e.preventDefault. all it needs is the formValues from onSubmit
 
 validate: validate has been reduced to just validate
+
+if the name of the Field matches the property of the title object eg error.title and title in Field component,
+redux-form will automatically pass that error msg to renderInput function
+
+add error to form className so semantic ui can display errors
 */
