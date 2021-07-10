@@ -1,5 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
+import { createStream } from '../../actions'
 
 class StreamCreate extends React.Component {
     renderError({ error, touched }) {
@@ -25,8 +27,9 @@ class StreamCreate extends React.Component {
         )
     }
 
-    onSubmit(formValues) {
+    onSubmit = (formValues) => {
         console.log('formValues', formValues)
+        this.props.createStream(formValues)
     }
 
     render() {
@@ -65,10 +68,12 @@ const validate = (formValues) => {
     return error
 }
 
-export default reduxForm({
+const formWrapped = reduxForm({
     form: 'streamCreate',
     validate
 })(StreamCreate)
+
+export default connect(null, { createStream })(formWrapped)
 
 /*
 Field is a react component, reduxForm is a function that works similar to the connect 
@@ -104,4 +109,6 @@ if the name of the Field matches the property of the title object eg error.title
 redux-form will automatically pass that error msg to renderInput function
 
 add error to form className so semantic ui can display errors
+
+formWrapped is wrapping up reduxForm so the connect funtion below is neater
 */
