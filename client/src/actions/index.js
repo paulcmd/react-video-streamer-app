@@ -49,7 +49,7 @@ export const fetchStream = (id) => async (dispatch) => {
     })
 }
 
-export const editStream = (id, formValues) => async dispatch => {
+export const editStream = (id, formValues) => async (dispatch) => {
     const response = await streams.put(`/streams/${id}`, formValues)
 
     dispatch({
@@ -58,6 +58,32 @@ export const editStream = (id, formValues) => async dispatch => {
     })
 }
 
+export const deleteStream = (id) => async (dispatch) => {
+    await streams.delete(`/streams/${id}`)
+
+    dispatch({
+        type: DELETE_STREAM,
+        payload: id
+    })
+}
+
 /*
 ALL http axios methods - Video 340 - Bulk Action Creators 1:30
+
+Example to explain es6 syntax for adding a new item to an object:
+
+const animalSounds = { cat: 'meow', dog: 'bark'}
+
+const animal = 'lion'
+
+const sound = 'roar'
+
+{ ...animalSounds, [animal] : sound }
+
+you'll get:
+
+{cat: 'meow', dog: 'bark', lion: 'roar'}
+
+thus [animal]: sound creates a new key : value pair with whatever [animal] 
+and sound are referencing
 */
