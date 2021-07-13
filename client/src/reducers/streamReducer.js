@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import {
     CREATE_STREAM,
     FETCH_STREAMS,
@@ -14,6 +15,8 @@ export default (state = {}, action) => {
             return { ...state, [action.payload.id]: action.payload }
         case EDIT_STREAM:
             return { ...state, [action.payload.id]: action.payload }
+        case DELETE_STREAM:
+            return _.omit( state, action.payload )
         default:
             return state
     }
@@ -22,6 +25,6 @@ export default (state = {}, action) => {
 /*
 ...state returns a new state object from state. redux requires that a new state
 object be returned. 
-state does not have all key value pairs in the db. it only has what we have fetched
-so far using get methods
+omit does not change the state object. it creates a new state object without whatever we
+passed in as action.payload
 */
