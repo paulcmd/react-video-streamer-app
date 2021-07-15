@@ -71,6 +71,7 @@ export const deleteStream = (id) => async (dispatch) => {
 
 /*
 ALL http axios methods - Video 340 - Bulk Action Creators 1:30
-getState function can reach into global state and pull out the userId from the auth
-piece of state
+-getState function can reach into global state and pull out the userId from the auth
+piece of state.
+-with the userId we can decide what to show the authenticated user and what not to show
 */
