@@ -22,8 +22,10 @@ export const signOut = () => {
     }
 }
 
-export const createStream = (formValues) => async (dispatch) => {
-    const response = await streams.post('/streams', formValues)
+export const createStream = (formValues) => async (dispatch, getState) => {
+    const { userId } = getState().auth
+    console.log('userId',userId)
+    const response = await streams.post('/streams', {...formValues, userId})
     //console.log(response.data)
     dispatch({
         type: CREATE_STREAM,
@@ -69,4 +71,6 @@ export const deleteStream = (id) => async (dispatch) => {
 
 /*
 ALL http axios methods - Video 340 - Bulk Action Creators 1:30
+getState function can reach into global state and pull out the userId from the auth
+piece of state
 */
