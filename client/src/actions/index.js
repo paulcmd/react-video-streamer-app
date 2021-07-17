@@ -8,6 +8,7 @@ import {
     EDIT_STREAM
 } from './types'
 import streams from '../apis/streams'
+import history from '../history'
 
 export const signIn = (userId) => {
     return {
@@ -31,6 +32,7 @@ export const createStream = (formValues) => async (dispatch, getState) => {
         type: CREATE_STREAM,
         payload: response.data
     })
+    history.push('/')
 }
 
 export const fetchStreams = () => async (dispatch) => {
@@ -74,4 +76,8 @@ ALL http axios methods - Video 340 - Bulk Action Creators 1:30
 -getState function can reach into global state and pull out the userId from the auth
 piece of state.
 -with the userId we can decide what to show the authenticated user and what not to show
+
+-soon as we create a stream, history.push('/') programmatically takes the user to the 
+streams list(home page)
+
 */

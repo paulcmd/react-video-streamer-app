@@ -50,6 +50,12 @@
       "description": "new stream with id displaying",
       "userId": "103433150577345909080",
       "id": 12
+    },
+    {
+      "title": "Programmatic rerouting",
+      "description": "Hope it works!",
+      "userId": "103433150577345909080",
+      "id": 13
     }
   ]
 }
