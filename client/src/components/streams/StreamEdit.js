@@ -1,13 +1,27 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const StreamEdit = (props) => {
-    console.log(props)
+const StreamEdit = ({stream}) => {
+    console.log('stream being edited',stream)
     return (
-        <div>StreamEdit</div>
+        <div>
+            {stream.title}
+            <br />
+            {stream.description}
+        
+        </div>
     )
 }
 
-export default StreamEdit
+const mapStateToProps = (state, ownProps) => {
+    //console.log('ownProps',ownProps)
+    return {
+        stream: state.streams[ownProps.match.params.id]
+    }
+     
+}
+
+export default connect(mapStateToProps)(StreamEdit)
 
 /*
 - the props are coming from the Route component, from react-router-dom
