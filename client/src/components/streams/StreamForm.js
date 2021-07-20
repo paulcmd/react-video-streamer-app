@@ -33,7 +33,17 @@ const StreamForm = ({handleSubmit, onSubmitCallback}) => {
     )
 }
 
+const validate = (formValues) => {
+    const error = {}
+    if (!formValues.title) {
+        error.title = 'You must enter a Title'
+    }
+    if (!formValues.description) {
+        error.description = 'You must enter a description'
+    }
 
+    return error
+}
 
 export default reduxForm({
     form: 'streamForm',
