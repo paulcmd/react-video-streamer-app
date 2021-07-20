@@ -5,7 +5,15 @@ const StreamForm = ({handleSubmit, onSubmitCallback}) => {
 
  //   console.log('streamForm props', props)
     
-  
+   const renderError = ({ error, touched }) => {
+        if (touched && error) {
+            return (
+                <div className="ui error message">
+                    <div className="header">{error}</div>
+                </div>
+            )
+        }
+    }
 
    
 
