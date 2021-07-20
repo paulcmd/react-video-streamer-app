@@ -4,8 +4,9 @@ import _ from 'lodash'
 import { fetchStream, editStream } from '../../actions'
 import StreamForm from './StreamForm'
 
-const StreamEdit = ({ stream, match, fetchStream, editStream }) => {
-    console.log('stream being edited', stream)
+const StreamEdit = ({ stream, fetchStream, match, editStream }) => {
+    console.clear()
+   console.log('stream from streamEdit props', stream)
 
     useEffect(() => {
         fetchStream(match.params.id)
@@ -26,7 +27,8 @@ const StreamEdit = ({ stream, match, fetchStream, editStream }) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log('ownProps', ownProps)
+   // console.log('ownProps', ownProps)
+    //console.log('stream from streamEdit mapState',state.streams[ownProps.match.params.id])
     return {
         stream: state.streams[ownProps.match.params.id]
     }
@@ -35,6 +37,9 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(mapStateToProps, { fetchStream, editStream })(StreamEdit)
 
 /*
+- fetchStream is loading our stream into props from mapStateToProps. this makes the component
+ independent from streamList and other components. it can fetch its own data and edit it. 
+ otherwise if a user bookmarked this page they'd come back and find no data.
 - the props are coming from the Route component, from react-router-dom
 - useParams can also be used here to extract id directly from match object
 -initialValues are coming from the values with the same name in the 

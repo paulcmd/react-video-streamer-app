@@ -13,7 +13,7 @@ const StreamForm = ({ handleSubmit, onSubmitCallback }) => {
     )
 
     const renderInput = ({ input, label, meta }) => {
-        console.log('meta', meta)
+       // console.log('meta', meta)
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`
 
         return (
