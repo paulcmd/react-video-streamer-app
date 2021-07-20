@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Route } from 'react-router-dom'
+import { Router, Route, useHistory } from 'react-router-dom'
 
 import StreamList from './streams/StreamList'
 import StreamCreate from './streams/StreamCreate'
@@ -8,6 +8,7 @@ import StreamEdit from './streams/StreamEdit'
 import StreamShow from './streams/StreamShow'
 import Header from './Header'
 import history from '../history'
+
 
 const App = () => {
     return (
@@ -34,6 +35,8 @@ export default App
 
 
 /*
--weve switched from using BrowserRouter to just Router so that we can pass our own
+- switched from using BrowserRouter to just Router so that we can pass our own
 history object
+
+-useHistory can now be used instead of creating a history file/object
 */

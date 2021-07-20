@@ -8,7 +8,7 @@ import {
     EDIT_STREAM
 } from './types'
 import streams from '../apis/streams'
-import history from '../history'
+import { useHistory } from 'react-router-dom'
 
 export const signIn = (userId) => {
     return {
@@ -24,6 +24,7 @@ export const signOut = () => {
 }
 
 export const createStream = (formValues) => async (dispatch, getState) => {
+    let history = useHistory()
     const { userId } = getState().auth
     console.log('userId',userId)
     const response = await streams.post('/streams', {...formValues, userId})
