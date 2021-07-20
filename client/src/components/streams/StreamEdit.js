@@ -1,25 +1,26 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { fetchStream } from '../../actions'
+import _ from 'lodash'
+import { fetchStream, editStream } from '../../actions'
+import StreamForm from './StreamForm'
 
-const StreamEdit = ({ stream }) => {
+const StreamEdit = ({ stream, match }) => {
     console.log('stream being edited', stream)
 
     useEffect(() => {
-        fetchStream()
+        fetchStream(match.params.id)
     }, [])
+
+    const onSubmit = (formValues) => {
+        
+    }
 
     return (
         <div>
-            {!stream ? (
-                <div>Loading...</div>
-            ) : (
-                <div>
-                    {stream.title}
-                    <br />
-                    {stream.description}
-                </div>
-            )}
+            <h3>Edit a Stream</h3>
+            <StreamForm
+                initialValues={_.pick(stream, 'title', 'description')}
+                onSubmitCallback={onSubmit} />
         </div>
     )
 }
@@ -31,9 +32,12 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, { fetchStream })(StreamEdit)
+export default connect(mapStateToProps, { fetchStream, editStream })(StreamEdit)
 
 /*
 - the props are coming from the Route component, from react-router-dom
 - useParams can also be used here to extract id directly from match object
+-initialValues are coming from the values with the same name in the 
+Field component
+- we only want to pick title and desc and not the id. 
 */

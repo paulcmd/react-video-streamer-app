@@ -1,21 +1,18 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-const StreamForm = ({handleSubmit, onSubmitCallback}) => {
+const StreamForm = ({ handleSubmit, onSubmitCallback }) => {
+    //   console.log('streamForm props', props)
 
- //   console.log('streamForm props', props)
-    
-   const renderError = ({ error, touched }) => {
-        if (touched && error) {
-            return (
-                <div className="ui error message">
-                    <div className="header">{error}</div>
-                </div>
-            )
-        }
-    }
+    const renderError = ({ error, touched }) => (
+         touched && error ? (
+            <div className="ui error message">
+                <div className="header">{error}</div>
+            </div>
+        ) : null
+    )
 
-   const renderInput = ({ input, label, meta }) => {
+    const renderInput = ({ input, label, meta }) => {
         console.log('meta', meta)
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`
 
@@ -34,15 +31,8 @@ const StreamForm = ({handleSubmit, onSubmitCallback}) => {
     }
 
     return (
-        <form
-            className="ui form error"
-            onSubmit={handleSubmit(onSubmit)}
-        >
-            <Field
-                name="title"
-                component={renderInput}
-                label="Enter a Title"
-            />
+        <form className="ui form error" onSubmit={handleSubmit(onSubmit)}>
+            <Field name="title" component={renderInput} label="Enter a Title" />
 
             <Field
                 name="description"
