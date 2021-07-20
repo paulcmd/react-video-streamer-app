@@ -35,6 +35,10 @@ const StreamForm = ({handleSubmit, onSubmitCallback}) => {
 
 
 
+export default reduxForm({
+    form: 'streamForm',
+    validate
+})(StreamForm)
 
 /*
 Field is a react component, reduxForm is a function that works similar to the connect 
