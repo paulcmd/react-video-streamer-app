@@ -6,7 +6,7 @@ import StreamForm from './StreamForm'
 const StreamCreate = ({createStream}) => {
     
     const onSubmit = (formValues) => {
-        console.log('formValues', formValues)
+       // console.log('formValues', formValues)
         createStream(formValues)
     }
 
