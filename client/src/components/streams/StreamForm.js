@@ -17,7 +17,10 @@ const StreamForm = ({handleSubmit, onSubmitCallback}) => {
 
    
 
-    
+    const onSubmit = (formValues) => {
+        console.log('formValues', formValues)
+        onSubmitCallback(formValues)
+    }
 
     return (
         <form
