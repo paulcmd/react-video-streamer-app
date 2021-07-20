@@ -4,7 +4,7 @@ import _ from 'lodash'
 import { fetchStream, editStream } from '../../actions'
 import StreamForm from './StreamForm'
 
-const StreamEdit = ({ stream, match }) => {
+const StreamEdit = ({ stream, match, fetchStream, editStream }) => {
     console.log('stream being edited', stream)
 
     useEffect(() => {
