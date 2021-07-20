@@ -15,7 +15,18 @@ const StreamForm = ({handleSubmit, onSubmitCallback}) => {
         }
     }
 
-   
+   const renderInput = ({ input, label, meta }) => {
+        console.log('meta', meta)
+        const className = `field ${meta.error && meta.touched ? 'error' : ''}`
+
+        return (
+            <div className={className}>
+                <label>{label}</label>
+                <input {...input} autoComplete="off" />
+                {renderError(meta)}
+            </div>
+        )
+    }
 
     const onSubmit = (formValues) => {
         console.log('formValues', formValues)
