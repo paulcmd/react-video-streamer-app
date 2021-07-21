@@ -6,16 +6,6 @@
       "id": 1
     },
     {
-      "title": "My Stream",
-      "description": "Best stream ever!",
-      "id": 2
-    },
-    {
-      "title": "My Stream",
-      "description": "Best stream ever!",
-      "id": 3
-    },
-    {
       "title": "Programmatic routing",
       "description": "testing testing",
       "userId": "103433150577345909080",
@@ -26,22 +16,7 @@
       "description": "ehrh",
       "userId": "103433150577345909080",
       "id": 5
-    },
-    {
-      "title": "ffgw",
-      "description": "2rwrw",
-      "userId": "103433150577345909080",
-      "id": 6
-    },
-    {
-      "title": "jnjvkh",
-      "description": "nknjvkjt",
-      "id": 7
-    },
-    {
-      "title": "vgeg",
-      "description": "bt",
-      "id": 8
     }
+    
   ]
 }
