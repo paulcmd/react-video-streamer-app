@@ -15,12 +15,11 @@ const StreamDelete = ({ fetchStream, deleteStream, stream }) => {
 
     const onDissmiss = () => history.push('/')
 
-    const renderContent = () =>
-        !stream
-            ? 'Are you sure you want to delete this stream'
-            : `Are you sure you want to delete this stream with title: ${stream.title}`
+    const renderContent = !stream
+        ? 'Are you sure you want to delete this stream'
+        : `Are you sure you want to delete this stream with title : ${stream.title} ?`
 
-    const renderActionButtons = () => (
+    const renderActionButtons = (
         <>
             <button
                 onClick={() => deleteStream(id)}
@@ -35,14 +34,12 @@ const StreamDelete = ({ fetchStream, deleteStream, stream }) => {
     )
 
     return (
-        
-            <Modal
-                title="Delete Stream"
-                content={renderContent}
-                actionButtons={renderActionButtons}
-                onDissmiss={onDissmiss}
-            />
-        
+        <Modal
+            title="Delete Stream"
+            content={renderContent}
+            actionButtons={renderActionButtons}
+            onDissmiss={onDissmiss}
+        />
     )
 }
 
