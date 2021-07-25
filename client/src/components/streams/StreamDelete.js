@@ -1,23 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Modal from '../Modal'
 import history from '../../history'
+import { connect } from 'react-redux'
+import { fetchStream, deleteStream } from '../../actions'
+import { useParams } from 'react-router-dom'
 
-const StreamDelete = () => {
-    const actionButtons =  (
-            <>
-                <button className='ui button negative'>Delete</button>
-                <button className='ui button'>Cancel</button>
-            </>
-    )
-    
+const StreamDelete = ({ stream }) => {
+    const { id } = useParams()
+
+    useEffect(() => {
+        fetchStream(id)
+    }, [])
+
     const onDissmiss = () => history.push('/')
-    
+
+    const actionButtons = (
+        <>
+            <button
+                onClick={()=> deleteStream(id)}
+                className="ui button negative">Delete</button>
+            <button onClick={()=> onDissmiss()} className="ui button">
+                Cancel
+            </button>
+        </>
+    )
 
     return (
         <div>
             <Modal
                 title="Delete Stream"
-                content="Are you sure you want to delete this stream?"
+                content={`Are you sure you want to delete ${stream.title} stream ? `}
                 actionButtons={actionButtons}
                 onDissmiss={onDissmiss}
             />
@@ -25,7 +37,13 @@ const StreamDelete = () => {
     )
 }
 
-export default StreamDelete
+const mapStateToProps = (state, ownProps) => {
+    //console.log('state', state)
+    return {
+        stream: state.streams[ownProps.match.params.id]
+    }
+}
+export default connect(mapStateToProps, { fetchStream, deleteStream })(StreamDelete)
 
 /*
 reat fragment is an invisible element that doesnt have any impact on the DOM

@@ -5,7 +5,7 @@ import { fetchStream, editStream } from '../../actions'
 import StreamForm from './StreamForm'
 import { useParams } from 'react-router-dom'
 
-const StreamEdit = ({ stream, fetchStream, editStream }) => {
+const StreamEdit = ({ stream }) => {
 
     const { id } = useParams()
     console.clear()

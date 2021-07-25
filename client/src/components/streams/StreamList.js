@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchStreams } from '../../actions'
 import { Link } from 'react-router-dom'
 
-const streamList = ({ streams, currentUserId, isSignedIn }) => {
+const StreamList = ({ fetchStreams, streams, currentUserId, isSignedIn }) => {
+
     useEffect(() => {
         fetchStreams()
     }, [])
