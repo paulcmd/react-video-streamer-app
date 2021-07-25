@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { fetchStream, deleteStream } from '../../actions'
 import { useParams } from 'react-router-dom'
 
-const StreamDelete = ({ stream }) => {
+const StreamDelete = ({ fetchStream, deleteStream, stream }) => {
     const { id } = useParams()
 
     useEffect(() => {
@@ -14,26 +14,34 @@ const StreamDelete = ({ stream }) => {
 
     const onDissmiss = () => history.push('/')
 
-    const actionButtons = (
+    const renderContent = () =>
+        !stream
+            ? 'Are you sure you want to delete this stream'
+            : `Are you sure you want to delete this stream with title: ${stream.title}`
+
+    const renderActionButtons = () => (
         <>
             <button
-                onClick={()=> deleteStream(id)}
-                className="ui button negative">Delete</button>
-            <button onClick={()=> onDissmiss()} className="ui button">
+                onClick={() => deleteStream(id)}
+                className="ui button negative"
+            >
+                Delete
+            </button>
+            <button onClick={() => onDissmiss()} className="ui button">
                 Cancel
             </button>
         </>
     )
 
     return (
-        <div>
+        
             <Modal
                 title="Delete Stream"
-                content={`Are you sure you want to delete ${stream.title} stream ? `}
-                actionButtons={actionButtons}
+                content={renderContent}
+                actionButtons={renderActionButtons}
                 onDissmiss={onDissmiss}
             />
-        </div>
+        
     )
 }
 
@@ -43,7 +51,9 @@ const mapStateToProps = (state, ownProps) => {
         stream: state.streams[ownProps.match.params.id]
     }
 }
-export default connect(mapStateToProps, { fetchStream, deleteStream })(StreamDelete)
+export default connect(mapStateToProps, { fetchStream, deleteStream })(
+    StreamDelete
+)
 
 /*
 reat fragment is an invisible element that doesnt have any impact on the DOM
