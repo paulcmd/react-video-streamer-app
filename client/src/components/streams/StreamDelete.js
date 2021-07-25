@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Modal from '../Modal'
 import history from '../../history'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { fetchStream, deleteStream } from '../../actions'
 import { useParams } from 'react-router-dom'
 
@@ -27,9 +28,9 @@ const StreamDelete = ({ fetchStream, deleteStream, stream }) => {
             >
                 Delete
             </button>
-            <button onClick={() => onDissmiss()} className="ui button">
+            <Link to={'/'} onClick={() => onDissmiss()} className="ui button">
                 Cancel
-            </button>
+            </Link>
         </>
     )
 
