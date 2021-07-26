@@ -35,10 +35,10 @@ const StreamList = ({ fetchStreams, streams, currentUserId, isSignedIn }) => {
                 <div className="item" key={stream.id}>
                     {renderAdmin(stream)}
                     <i className="large middle aligned icon camera" />
-                    <div className="content">
+                    <Link to={`/streams/${stream.id}`} className="header">
                         {stream.title}
                         <div className="description">{stream.description}</div>
-                    </div>
+                    </Link>
                 </div>
             )
         })
