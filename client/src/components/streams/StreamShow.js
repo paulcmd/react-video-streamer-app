@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-//import _ from 'lodash'
 import { fetchStream } from '../../actions'
-//import StreamForm from './StreamForm'
+import flv from 'flv.js'
 import { useParams } from 'react-router-dom'
 
 const StreamShow = ({ fetchStream, stream }) => {
@@ -21,6 +20,7 @@ const StreamShow = ({ fetchStream, stream }) => {
     const { title, description } = stream
     return (
         <div>
+            <video />
             <h1>{title}</h1>
             <h3>{description}</h3>
         </div>
@@ -28,7 +28,7 @@ const StreamShow = ({ fetchStream, stream }) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    // console.log('ownProps', ownProps)
+    
     return {
         stream: state.streams[ownProps.match.params.id]
     }
