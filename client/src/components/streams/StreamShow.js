@@ -21,12 +21,12 @@ class StreamShow extends Component {
 
     render() {
         if (!stream) {
-            ;<div>Loading...</div>
+            <div>Loading...</div>
         }
         const { title, description } = stream
         return (
             <div>
-                <video />
+                <video ref={this.videoRef}/>
                 <h1>{title}</h1>
                 <h3>{description}</h3>
             </div>
@@ -41,3 +41,8 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 export default connect(mapStateToProps, { fetchStream })(StreamShow)
+
+
+/* ref in react gives us reference to a dom element in the dom tree
+- a constructor method is needed to create an instance of ref
+*/
