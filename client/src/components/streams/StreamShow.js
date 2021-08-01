@@ -9,10 +9,6 @@ class StreamShow extends Component {
 
         this.videoRef = React.createRef()
     }
-    // const { id } = useParams()
-
-    // console.clear()
-    //  console.log('stream from streamShow props', stream)
 
     componentDidMount() {
         const { id } = this.props.match.params
