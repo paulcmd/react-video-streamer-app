@@ -68,7 +68,7 @@ if(this.player || !this.props.stream){
     return
 }
 
-if we have the player, dont attempt to build it(its already there), also if no stream, dont attempt to build it
+if we have the player, dont attempt to build it(its already there), also if no stream, dont attempt to build it, else build it
 
 componentDidUpdate rebuilds player whenever component re-renders
 */
