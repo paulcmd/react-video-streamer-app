@@ -16,6 +16,10 @@ class StreamShow extends Component {
         this.buildPlayer()
     }
 
+    componentDidUpdate() {
+
+    }
+
     buildPlayer() {
         if (this.player || !this.props.stream) {
             return
