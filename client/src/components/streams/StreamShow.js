@@ -17,27 +17,28 @@ class StreamShow extends Component {
     }
 
     componentDidUpdate() {
-
+        this.buildPlayer()
     }
 
     buildPlayer() {
         if (this.player || !this.props.stream) {
             return
-        } {
-            const { id } = this.props.match.params
-            this.player = flv.createPlayer({
-                type: 'flv',
-                url: `http://localhost:8000/live/${id}.flv`
-            })
-            this.player.attachMediaElement(this.videoRef.current)
-            this.player.load()
         }
+
+        const { id } = this.props.match.params
+        this.player = flv.createPlayer({
+            type: 'flv',
+            url: `http://localhost:8000/live/${id}.flv`
+        })
+        this.player.attachMediaElement(this.videoRef.current)
+        this.player.load()
     }
 
     render() {
         if (!this.props.stream) {
-            <div>Loading...</div>
+           return <div>Loading...</div>
         }
+
         const { title, description } = this.props.stream
         return (
             <div>

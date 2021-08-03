@@ -4,6 +4,9 @@ import { signIn, signOut } from '../actions'
 
 class GoogleAuth extends React.Component {
     componentDidMount() {
+         if (!window.gapi) {
+             return <div>Loading...</div>
+         }
         window.gapi.load('client:auth2', () => {
             window.gapi.client
                 .init({
@@ -77,6 +80,7 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, { signIn, signOut })(GoogleAuth)
 
 /*
+7- until we get window.gapi dont try to load window.gapi.load
 - window.gapi - we have to indicate its for the window scope
 - we are loading up the client portion of the library every time the app loads the first time
 - the callback function ie window.gapi.client... is called after this clients auth2 library is loaded into gapi
