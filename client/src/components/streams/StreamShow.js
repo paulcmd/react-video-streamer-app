@@ -13,7 +13,7 @@ class StreamShow extends Component {
     componentDidMount() {
         const { id } = this.props.match.params
         this.props.fetchStream(id)
-        
+        this.buildPlayer()
     }
 
     buildPlayer() {
