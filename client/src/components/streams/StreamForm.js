@@ -1,19 +1,18 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Form, Field } from 'react-final-form'
 
-const StreamForm = ({ handleSubmit, onSubmitCallback }) => {
+const StreamForm = ({ initialValues, onSubmitCallback }) => {
     //   console.log('streamForm props', props)
 
-    const renderError = ({ error, touched }) => (
-         touched && error ? (
+    const renderError = ({ error, touched }) =>
+        touched && error ? (
             <div className="ui error message">
                 <div className="header">{error}</div>
             </div>
         ) : null
-    )
 
     const renderInput = ({ input, label, meta }) => {
-       // console.log('meta', meta)
+        // console.log('meta', meta)
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`
 
         return (
@@ -30,37 +29,41 @@ const StreamForm = ({ handleSubmit, onSubmitCallback }) => {
         onSubmitCallback(formValues)
     }
 
-    return (
-        <form className="ui form error" onSubmit={handleSubmit(onSubmit)}>
-            <Field name="title" component={renderInput} label="Enter a Title" />
+    const validate = (formValues) => {
+        const error = {}
+        if (!formValues.title) {
+            error.title = 'You must enter a Title'
+        }
+        if (!formValues.description) {
+            error.description = 'You must enter a description'
+        }
 
+        return error
+    }
+
+    const render = ({ handleSubmit }) => (
+        <form onSubmit={handleSubmit} className="ui form error">
+            <Field name="title" component={renderInput} label="Enter Title" />
             <Field
                 name="description"
                 component={renderInput}
-                label="Enter a description"
+                label="Enter Description"
             />
-
             <button className="ui button primary">Submit</button>
         </form>
     )
+
+    return (
+        <Form
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validate={validate}
+            render={render}
+        />
+    )
 }
 
-const validate = (formValues) => {
-    const error = {}
-    if (!formValues.title) {
-        error.title = 'You must enter a Title'
-    }
-    if (!formValues.description) {
-        error.description = 'You must enter a description'
-    }
-
-    return error
-}
-
-export default reduxForm({
-    form: 'streamForm',
-    validate
-})(StreamForm)
+export default StreamForm
 
 /*
 Field is a react component, reduxForm is a function that works similar to the connect 
