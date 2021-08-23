@@ -1,4 +1,4 @@
-# E-Commerce Web Application
+# React Video Streaming App
   ![GitHub repo size](https://img.shields.io/github/repo-size/paulcmd/react-video-streamer-app?style=for-the-badge) ![GitHub code size](https://img.shields.io/github/languages/code-size/paulcmd/react-video-streamer-app?color=gold&style=for-the-badge) ![GitHub language count](https://img.shields.io/github/languages/count/paulcmd/react-video-streamer-app?color=green&style=for-the-badge) ![GitHub top language](https://img.shields.io/github/languages/top/paulcmd/react-video-streamer-app?color=red&style=for-the-badge)
 
 ---
