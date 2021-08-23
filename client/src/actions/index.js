@@ -10,7 +10,7 @@ import {
 import streams from '../apis/streams'
 import history from '../history'
 
-export const signIn = (userId) => {
+export const signIn = (userId) => {   //function used in googleAuth.js
     return {
         type: SIGN_IN,
         payload: userId
