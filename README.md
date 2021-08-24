@@ -42,7 +42,7 @@ Steps to use this application:
 ---
 
 ## Demonstration:
-To view a demonstration of this application, go to ==> __[this link](https://react-ecommercejs.netlify.app/)__.
+To view a demonstration of this application, go to ==> __[this link](https://react-youtube-video-custom-hooks.netlify.app/)__.
 
 ---
 
