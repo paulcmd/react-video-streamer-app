@@ -4,7 +4,7 @@
 ---
 
 ## Description:
-This is a React-base See the [usage](#usage) or [demonstration](#demonstration) sections for a more detailed explanation on how to use this application.
+
 
 ---
 
@@ -21,42 +21,18 @@ This is a React-base See the [usage](#usage) or [demonstration](#demonstration) 
 ## Installation:
 None is required.
 
----
-
-
-![img-1](src/assets/images/readme-imgs/home-page.png)
-
-Steps to use this application:
-* __step 1:__ Products are fetched and populated on the home screen.
-
-![img-2](readme-imgs/income-input.png)
-* __step 2:__ Input information about the expense (name/type, and amount) and click the "Add Transaction" button.
-
-![img-3](readme-imgs/expense-input.png)
-
-* __step 3:__ Keep adding transactions. The list and balance will persist even if the page is closed/re-opened or refreshed.
-
-![img-5](readme-imgs/transactions.png)
-
 
 ---
 
 ## Demonstration:
 To view a demonstration of this application, go to ==> __[this link](https://react-youtube-video-custom-hooks.netlify.app/)__.
 
----
-
-## Usage:
-At Checkout, under Payment Method, use 424242... for card number, month, year and cvc code. These are stripe defaults.
 
 ---
 
 ## Resources:
-* [CommerceJS](https://commercejs.com/product/ecommerce-api)
-	- [CommerJS Products](https://commercejs.com/docs/sdk/products)
-    - [CommerceJS Checkout](https://commercejs.com/docs/sdk/checkout)
-* [React Stripe.js](https://stripe.com/docs/stripe-js/react)
-* [Material-UI](https://material-ui.com/)
+
+* [Semantic-UI](https://semantic-ui.com/)
 * [ReactJS](https://reactjs.org/docs/getting-started.html)
   * [React Hooks](https://reactjs.org/docs/hooks-intro.html)
     - [useState](https://reactjs.org/docs/hooks-state.html)
